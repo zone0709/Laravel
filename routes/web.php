@@ -39,3 +39,11 @@ Route::post('upload_file',[
     'uses'=>'UserController@postUpload',
     'as'=>'upload_file'
 ]);
+Route::get('detail',[
+    'uses'=>'UserController@getDetail',
+    'as'=>'detail'
+]);
+Route::get('type',[
+    'uses'=>'UserController@getType',
+    'as'=>'type'
+]);

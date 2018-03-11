@@ -80,4 +80,10 @@ class UserController extends Controller
 
         //rename
     }
+    function getDetail(){
+        return view('pages/detail');
+    }
+    function getType(){
+        return view('pages/type');
+    }
 }
