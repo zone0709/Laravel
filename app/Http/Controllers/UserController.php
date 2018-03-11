@@ -51,4 +51,33 @@ class UserController extends Controller
     function getHome(){
         return view('pages/home');
     }
+    function getFormUpload(){
+        return view('upload_file');
+    }
+    function postUpload(Request $req){
+        //kiem tra file size
+        if($req->hasFile('image')){
+            $file = $req->file('image');
+            
+            if($file->getSize() > 102400){
+                echo "File too large! Choose again";
+                return;
+            }
+            $ext = $file->getClientOriginalExtension();
+            $chkType =['png','jpg','gif'];
+            if(!in_array($ext,$chkType)){
+                echo"Check file type again!!";
+                return;
+            }
+            $baseName = $file->getClientOriginalName();
+            $newName = date('d-m-Y-').$baseName;
+            $file->move('images',$newName);
+            echo"Upload Success!!";
+        }else{
+            echo "File not found!";
+        }
+        // file type [png,jpg,gif]
+
+        //rename
+    }
 }
